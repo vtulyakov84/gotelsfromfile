@@ -59,7 +59,7 @@ func parseFlags() Config {
 	programName := filepath.Base(os.Args[0])
 
 	flag.Usage = func() {
-		fmt.Printf("Использование: %s [опции] -file <путь_к_файлу>\n\n", os.Args[0])
+		fmt.Printf("Использование: %s [опции] -file <путь_к_файлу>\n\n", programName)
 		fmt.Println("Опции:")
 		flag.PrintDefaults()
 		fmt.Println("\nПримеры:")
