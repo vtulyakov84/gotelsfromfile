@@ -26,7 +26,7 @@
 Смешанные          996.306.07.22
 ```
 
-### Сборка под GNU/Linux (x86_64)
+### Сборка программы для использования в ОС GNU/Linux (x86_64)
 ```bash
 # Базовая сборка в исполняемый файл
 GOOS=linux GOARCH=amd64 go build -o gotelsfromfile .
@@ -46,4 +46,22 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build \
 #   можно применить компрессор upx, после его предварительной устанвки в систему
 #   sudo apt-get install upx -y
 upx --brute myapp-linux-amd64
+```
+
+### Сборка программы для использования в ОС Windows (x86_64)
+
+```bash
+# Статическая сборка
+# Важно: для Windows CGO_ENABLED=0 особенно полезен,
+# так как отключает зависимость от Visual C++ # Redistributable (MSVCRT).
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o gotelsfromfile.exe .
+```
+
+#### Сборка для разных архитектур Windows
+```bash
+# для архитектуры 32-bit (x86)
+GOOS=windows GOARCH=386 go build -o gotelsfromfile.exe .
+
+# для архитектуры 64-bit (amd64)
+GOOS=windows GOARCH=amd64 go build -o gotelsfromfile.exe .
 ```
